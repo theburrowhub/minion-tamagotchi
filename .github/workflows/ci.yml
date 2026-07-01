@@ -1,0 +1,21 @@
+name: CI
+
+# A required status check on PRs, so Omniagent's auto-merge only fires when
+# green. Runs build + tests on every push and pull request.
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.22'
+      - name: Build
+        run: go build ./...
+      - name: Test
+        run: go test ./...
