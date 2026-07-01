@@ -41,3 +41,5 @@ deliberately simple — it is the end-to-end test bed for Omniagent itself.
 - Never delete existing commands or break their output contract without an issue
   asking for it.
 - Stats are clamped to 0–100; preserve that invariant.
+
+_Guide managed via Omniagent GUI (repo-guide editor, #45)._
