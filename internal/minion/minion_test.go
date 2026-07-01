@@ -66,6 +66,23 @@ func TestAgeStringPluralization(t *testing.T) {
 	}
 }
 
+func TestIsHungry(t *testing.T) {
+	cases := []struct {
+		hunger int
+		want   bool
+	}{
+		{69, false}, // just below threshold
+		{70, true},  // boundary
+		{71, true},  // above threshold
+	}
+	for _, c := range cases {
+		m := &Minion{Stats: Stats{Hunger: c.hunger}}
+		if got := m.IsHungry(); got != c.want {
+			t.Errorf("IsHungry(hunger=%d) = %v, want %v", c.hunger, got, c.want)
+		}
+	}
+}
+
 func TestMood(t *testing.T) {
 	cases := []struct {
 		energy, hunger int
