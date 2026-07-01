@@ -65,6 +65,11 @@ func (m *Minion) AgeString() string {
 	return fmt.Sprintf("%d %s", m.Age, unit)
 }
 
+// IsHungry reports whether the minion needs feeding, i.e. hunger has reached 70.
+func (m *Minion) IsHungry() bool {
+	return m.Stats.Hunger >= 70
+}
+
 // Mood is derived from energy and hunger.
 func (m *Minion) Mood() string {
 	switch {
