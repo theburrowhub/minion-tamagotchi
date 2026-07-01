@@ -55,6 +55,16 @@ func (m *Minion) Tick(activity int) {
 	m.Age++
 }
 
+// AgeString renders the age with a correctly pluralized unit: "1 tick" when
+// the minion has lived exactly one tick, and "N ticks" otherwise.
+func (m *Minion) AgeString() string {
+	unit := "ticks"
+	if m.Age == 1 {
+		unit = "tick"
+	}
+	return fmt.Sprintf("%d %s", m.Age, unit)
+}
+
 // Mood is derived from energy and hunger.
 func (m *Minion) Mood() string {
 	switch {

@@ -29,7 +29,7 @@ func main() {
 		m.Tick(0)
 		fmt.Println(m.Render())
 	case "age":
-		fmt.Printf("age: %d ticks\n", m.Age)
+		fmt.Printf("age: %s\n", m.AgeString())
 	case "help", "-h", "--help":
 		usage(os.Stdout)
 	default:
