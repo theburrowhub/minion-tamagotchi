@@ -28,6 +28,8 @@ func main() {
 		// Activity wiring lands in internal/activity; 0 for now.
 		m.Tick(0)
 		fmt.Println(m.Render())
+	case "age":
+		fmt.Printf("age: %s\n", m.AgeString())
 	case "help", "-h", "--help":
 		usage(os.Stdout)
 	default:
@@ -44,5 +46,6 @@ Usage:
   minion status   Show the minion and its stats
   minion feed     Feed the minion
   minion tick     Advance time one step
+  minion age      Show how many ticks the minion has lived
 `)
 }
