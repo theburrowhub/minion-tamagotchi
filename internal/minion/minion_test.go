@@ -34,6 +34,20 @@ func TestTickActivityFeedsEnergy(t *testing.T) {
 	}
 }
 
+func TestAgeIncrementsEachTick(t *testing.T) {
+	m := New("")
+	if m.Age != 0 {
+		t.Errorf("new minion age = %d, want 0", m.Age)
+	}
+	activities := []int{0, 5, -3, 100, 0}
+	for i, a := range activities {
+		m.Tick(a)
+		if m.Age != i+1 {
+			t.Errorf("after %d ticks age = %d, want %d", i+1, m.Age, i+1)
+		}
+	}
+}
+
 func TestMood(t *testing.T) {
 	cases := []struct {
 		energy, hunger int

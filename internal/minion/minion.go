@@ -14,6 +14,9 @@ type Stats struct {
 type Minion struct {
 	Name  string `json:"name"`
 	Stats Stats  `json:"stats"`
+	// Age is the number of ticks the minion has lived through. Unlike the
+	// vital signs in Stats, it is an unbounded lifetime counter (never clamped).
+	Age int `json:"age"`
 }
 
 // New returns a fresh minion with balanced stats.
@@ -49,6 +52,7 @@ func (m *Minion) Tick(activity int) {
 	}
 	m.Stats.Energy = clamp(m.Stats.Energy - 5 + activity)
 	m.Stats.Hunger = clamp(m.Stats.Hunger + 10)
+	m.Age++
 }
 
 // Mood is derived from energy and hunger.
